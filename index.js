@@ -199,6 +199,9 @@ Date.prototype.addDays = function (days) {
         if (dayStreams.length > 0) {
           // Create a row for each stream on this day
           dayStreams.forEach(stream => {
+            if(stream.datetime.getMonth() != thisDate.getMonth() || stream.datetime.getDate() != thisDate.getDate()){
+              return;
+            }
             const streamRow = document.createElement('div');
             streamRow.className = 'gridRow';
             streamRow.innerHTML = `
